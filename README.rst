@@ -31,9 +31,11 @@ Commands
 - test <Test Name>
 	- This command displays the status of the Test in the current session.
 	- <Test Name> : Specifies the name of Test.
+	- These results can be queried even when the current Test is in progress.
 - results <Test Name>
 	- This command displays not just the results of the Test from the current session but the entire history of results of the Test.
 	- <Test Name> : Specifies the name of Test.
+	- These are results retrieved from the database. These results for the current test will be avaiable only after the current test completes. However, history of results if it exists, will be displayed.
 
 Results
 ------------
@@ -49,6 +51,7 @@ PyTester records 3 kinds of results for every Test:
 - Database Results:
 	- This is the database of results of the Test.
 	- These are generated within the following folder hierarchy : <Test Package>/<Test Package>_<Test Module>.db
+	- Note that these results for the current test will be only available after the test completes. However, if the test has history of results, they will be displayed.
 
 Creating and running your own Tests
 ------------
