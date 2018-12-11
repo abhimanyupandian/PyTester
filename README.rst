@@ -25,6 +25,8 @@ Commands
 	- <Test Module> : Specifies the name of the Test Module that contains unittest.TestCase class.
 - run
 	- This command runs the tests within the Test Module that was loading using 'load' command.
+- environments
+	- This command diplays the status of all the Test Environments.
 - test <Test Name>
 	- This command displays the status of the Test in the current session.
 	- <Test Name> : Specifies the name of Test.
@@ -89,6 +91,10 @@ Sample Console output
 	Tester> test test_subtraction
 	id       | environment     | test            | createdAt       | startedAt       | finishedAt      | status          | results
 	206140   | Virtual Environment 1 | 2018-12-11 14:54:08 | 2018-12-11 14:54:13 | None            | IN PROGRESS     | BashTests/BashArithmeticTestsFail/test_subtraction/206140.txt
+	Tester> environments
+	Name            | Free            | Current Test
+	Virtual Environment 2 | False           | test_subtraction
+	Virtual Environment 1 | True            | None
 
 
 
