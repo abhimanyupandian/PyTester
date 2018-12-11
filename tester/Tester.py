@@ -354,13 +354,13 @@ class Tester(Cmd):
         try:
             testModuleName = testModuleName.split()
             if len(testModuleName) == 0:
-                raise Exception("Please provide the name of the Test Module")
+                raise Exception("Please provide the name of the Test Package")
             self._testModule, testEnvironmentCount = (testModuleName[0], testModuleName[1]) \
                 if len(testModuleName) > 1 else (testModuleName[0], 2)
             self._tester = _tester(self._testModule, testEnvironmentCount=int(testEnvironmentCount))
             if self._tester:
                 self.logInfo("Test Module was loaded successfully with {} Virtual Environments. "
-                             "Use 'load <Test Case Name>' command to load the tests in the Module".format
+                             "Use 'load <Test Module Name>' command to load the tests in the Module".format
                              (str(testEnvironmentCount)))
         except Exception as e:
             self.logInfo("There was a problem loading the Module - '{}'".format(e))
@@ -375,17 +375,17 @@ class Tester(Cmd):
             load FunctionalTests '''
         try:
             if self._tester == None:
-                self.logInfo("Run 'init <Test Module Name> <Environment Count>' command first to initialize the Test Module.")
+                self.logInfo("Run 'init <Test Package Name> <Environment Count>' command first to initialize the Test Module.")
             else:
                 self._loaded = self._tester.loadTests(testCaseName)
                 if self._loaded:
                     self.logInfo("The Tests were loaded successfully! Please enter 'run' command to run the tests")
         except AttributeError:
             if testCaseName == "":
-                self.logInfo("Test Case name cannot be empty!")
+                self.logInfo("Test Module name cannot be empty!")
             else:
-                self.logInfo("The Test Module '{}' does not contain an Test Case named '{}'. "
-                             "Were the Test Cases imported into the __init__.py of the module {}?"
+                self.logInfo("The Test Package '{}' does not contain an Test Module named '{}'. "
+                             "Were the Test Modules imported into the __init__.py of the module {}?"
                              "".format(self._testModule, testCaseName, self._testModule))
         except Exception as e:
             self.logInfo("There was problem loading the Test Case from the Module - '{}'".format(e))
@@ -397,15 +397,15 @@ class Tester(Cmd):
         :syntax
             run """
         if self._loaded is None:
-            self.logInfo("Run 'load <Test Case Name>' command first to load the Test Cases.")
+            self.logInfo("Run 'load <Test Module Name>' command first to load the Test Modules.")
         elif self._tester is None:
-            self.logInfo("Run 'init <Test Module Name> <Environment Count>' command first to initialize the Test Module.")
+            self.logInfo("Run 'init <Test Package Name> <Environment Count>' command first to initialize the Test Package.")
         else:
             self.logInfo("Starting tests in the background...")
             t = Thread(target=self._tester.runTests)
             t.daemon = True
             t.start()
-            self.logInfo("Tests were started in the background... Use 'results <test name>' and 'test <test name>' "
+            self.logInfo("Tests were started in the background... Use 'results <Test Name>' and 'test <Test Name>' "
                   "to retrieve results!")
         self.lastcmd = ''
 
@@ -413,11 +413,11 @@ class Tester(Cmd):
         """Retrieves results of a Test from the database.
         """
         if self._loaded is None:
-            self.logInfo("Run 'load <Test Case Name>' command first to load the Test Cases.")
+            self.logInfo("Run 'load <Test Module Name>' command first to load the Test Cases.")
         elif self._tester is None:
-            self.logInfo("Run 'init <Test Module Name> <Environment Count>' command first to initialize the Test Module.")
+            self.logInfo("Run 'init <Test Package Name> <Environment Count>' command first to initialize the Test Package.")
         elif str(test) == '':
-            self.logInfo("Test name cannot be empty!")
+            self.logInfo("Test Name cannot be empty!")
         else:
             results = self._tester.getResultsFromDatabase(str(test))
             if results is None:
@@ -430,11 +430,11 @@ class Tester(Cmd):
         """Retrieves Test details from the Test object.
         """
         if self._loaded is None:
-            self.logInfo("Run 'load <Test Case Name>' command first to load the Test Cases.")
+            self.logInfo("Run 'load <Test Module Name>' command first to load the Test Cases.")
         elif self._tester is None:
-            self.logInfo("Run 'init <Test Module Name> <Environment Count>' command first to initialize the Test Module.")
+            self.logInfo("Run 'init <Test Package Name> <Environment Count>' command first to initialize the Test Package.")
         elif str(test) == '':
-            self.logInfo("Test Case name cannot be empty!")
+            self.logInfo("Test Name cannot be empty!")
         else:
             _test = self._tester.getTest(str(test))
             if _test is None:
@@ -449,7 +449,7 @@ class Tester(Cmd):
         if self._tester:
             self._printEnvironments()
         else:
-            self.logInfo("Run 'init <Test Module Name> <Environment Count>' command first to initialize the Test Module.")
+            self.logInfo("Run 'init <Test Package Name> <Environment Count>' command first to initialize the Test Module.")
 
     def logInfo(self, message):
         logging.info(str(message))
