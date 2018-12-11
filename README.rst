@@ -6,7 +6,7 @@ Installation
 - git clone or download the repository.
 - Navigate into the root directory of the repository, where setup.py exists (ie; PyTester/)
 - Install the package using : python setup.py install
-- Run the application : python Tester.py
+- Run the application : python Tester.py (located at PyTester/tester/)
 
 Structure of Test
 ------------
@@ -38,14 +38,14 @@ PyTester records 3 kinds of results for every Test:
 
 - Main Logs:
 	- These are main logger messages that is outputted in the console.
-	- The are generated at the current working directory from where Tester.py was run.
+	- These are generated at the current working directory from where Tester.py was run.
 	- Main Log name : <Random Number>_log.log
 - Test Logs:
 	- These are Test specific logger messages.
-	- The are generated within the following folder hierarchy : <Test Package>/<Test Module>/<Test Name>/<random number>.log
+	- These are generated within the following folder hierarchy : <Test Package>/<Test Module>/<Test Name>/<random number>.log
 - Database Results:
 	- This is the database of results of the Test.
-	- The are generated within the following folder hierarchy : <Test Package>/<Test Package>_<Test Module>.db
+	- These are generated within the following folder hierarchy : <Test Package>/<Test Package>_<Test Module>.db
 
 Creating and running your own Tests
 ------------
@@ -62,14 +62,17 @@ Creating and running your own Tests
 	
 - We can have multiple modules but all of these modules must be imported into __init__.py.
 - This completes the Test creation and now we can proceed with running the Test using Tester.py.
-- Run Tester.py using
-- Initialize your Test Environment for your Test using : init <TEST_NAME>.
+- Run Tester.py 
+- Initialize your Test Environment for your Test using : init <PACKAGE_NAME>.
 - Load the Test Module using : load <MODULE_NAME>.
 - Run the Tests using : run
+- Retrieve results using : test <TEST_NAME> and results <TEST_NAME>
 
 Sample Console output
 -----------
-
+- <PACKAGE_NAME> : NewTests
+- <MODULE_NAME> : BashArithmeticTestsFail
+- <TEST_NAME> : test_subtraction
 
 .. code:: bash
 
