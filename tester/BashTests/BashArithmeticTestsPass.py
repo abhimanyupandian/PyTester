@@ -6,7 +6,7 @@ from tester import BashScript
 scriptPath = os.path.dirname(os.path.realpath(__file__)) + "/src/Arithmetic.sh"
 script = BashScript(scriptPath)
 
-toInt = lambda x: int(filter(str.isdigit, x) or 0)
+toInt = lambda x: [int(d) for d in re.findall(r'-?\d+', x)][0]
 
 class BashArithmeticTestsPass(unittest.TestCase):
 
