@@ -97,5 +97,22 @@ Sample Console output
 	Virtual Environment 2 | False           | test_subtraction
 	Virtual Environment 1 | True            | None
 
+Algorithm
+-----------
 
+- Initialize objects to store Test, Environment and Result data.
+- Connect to database table or create new if it does not exist.
+- Read 'Test Package' string input from the user.
+- Read 'Environment Count' integer input from the user, or default to 2.
+- Create a Thread pool with processes equal to the number of environments provided. 
+- Import the package if present, else display 'Test Module not Found' message.
+- Read 'Test Module' string input from user.
+- Load the module from the package if present using getattr. If failed, display error message.
+- On successful load of module, load all test functions within it using TestLoader().
+- Tests will be run using unittest.TextTestRunner().run(), which takes a unittest test function as input.
+- unittest.TextTestRunner().run() will be invoked from the test container function.
+- Upon running the tests, the test container function will be mapped to every test function using an 'async map'.
+- The 'asyn map' will maintain a queue of size of 'Environment Count'.
+- Update the test object when tests are running to allow retriveal of querying test results.
+- Update the database when the test is complete and mark test object accordingly.
 
