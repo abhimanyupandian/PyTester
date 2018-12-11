@@ -70,7 +70,7 @@ Creating and running your own Tests
 
 Sample Console output
 -----------
-- <PACKAGE_NAME> : NewTests
+- <PACKAGE_NAME> : BashTests
 - <MODULE_NAME> : BashArithmeticTestsFail
 - <TEST_NAME> : test_subtraction
 
@@ -79,7 +79,7 @@ Sample Console output
 	C:\Users\AP\Documents\PyTester\tester>python Tester.py
 	Logging into 88133_logs.log
 	Welcome! Type ? to list commands
-	Tester> init NewTests
+	Tester> init BashTests
 	Test Module was loaded successfully with 2 Virtual Environments. Use 'load <Test Case Name>' command to load the tests in the Module
 	Tester> load BashArithmeticTestsFail
 	The Tests were loaded successfully! Please enter 'run' command to run the tests
@@ -88,7 +88,7 @@ Sample Console output
 	Tests were started in the background... Use 'results <test name>' and 'test <test name>' to retrieve results!
 	Tester> test test_subtraction
 	id       | environment     | test            | createdAt       | startedAt       | finishedAt      | status          | results
-	206140   | Virtual Environment 1 | 2018-12-11 14:54:08 | 2018-12-11 14:54:13 | None            | IN PROGRESS     | NewTests/BashArithmeticTestsFail/test_subtraction/206140.txt
+	206140   | Virtual Environment 1 | 2018-12-11 14:54:08 | 2018-12-11 14:54:13 | None            | IN PROGRESS     | BashTests/BashArithmeticTestsFail/test_subtraction/206140.txt
 
 
 
