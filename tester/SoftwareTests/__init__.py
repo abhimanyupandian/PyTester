@@ -1,2 +1,2 @@
 
-from DatabaseTests import *
+from .DatabaseTests import *
