@@ -457,7 +457,7 @@ class Tester(Cmd):
 
     def _printEnvironments(self):
         print("{:<15} | {:<15} | {:<15} ".format("Name", "Free", "Current Test"))
-        for environmentName, environment in self._tester.environments.iteritems():
+        for environmentName, environment in self._tester.environments.items():
             print("{:<15} | {:<15} | {:<15} ".format(str(environment.name),
                                                  str(environment.free),
                                                  str(environment.currentTest)))
