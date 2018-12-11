@@ -1,4 +1,4 @@
 
-from PythonArithmeticTestsPass import *
-from PythonArithmeticTestsFail import *
+from .PythonArithmeticTestsPass import *
+from .PythonArithmeticTestsFail import *
 
