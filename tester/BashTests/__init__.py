@@ -1,3 +1,3 @@
 
-from BashArithmeticTestsPass import *
-from BashArithmeticTestsFail import *
+from .BashArithmeticTestsPass import *
+from .BashArithmeticTestsFail import *
