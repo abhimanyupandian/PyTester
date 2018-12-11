@@ -174,9 +174,9 @@ class _tester(object):
         :param test: A string, name of the test.
         """
         self._buildTestObjectBeforeRun(test)
-        _logsDirectory = '{}/{}/{}'.format(self._testModuleName, self._testCaseName, test)
+        _logsDirectory = os.path.join(self._testPath, self._testCaseName, test)
         if not os.path.exists(_logsDirectory):
-            os.makedirs(_logsDirectory)
+            os.makedirs(os.path.join(self._testPath, _logsDirectory))
         logFileName = '{}/{}.txt'.format(_logsDirectory, self._testDetails[test].id)
         self._testDetails[test].results = logFileName
         with open(logFileName, "w+") as logFile:
