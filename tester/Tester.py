@@ -207,6 +207,8 @@ class _tester(object):
         """
         self._testCaseName = testCase
         _testCase = getattr(self._testModule, testCase)
+        if self._testDetails:
+            self._testDetails = {}
         self.tests = TestLoader().getTestCaseNames(_testCase)
         self._testCase = _testCase
         for eachTest in self.tests:
