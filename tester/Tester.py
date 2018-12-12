@@ -337,6 +337,7 @@ class Tester(Cmd):
 
     _tester = None
     _loaded = None
+    _testModule = None
 
     prompt = 'Tester> '
     intro = "Welcome! Type ? to list commands"
@@ -346,6 +347,12 @@ class Tester(Cmd):
         '''exit the application.'''
         self.logInfo("Bye!")
         return True
+
+    def do_new(self, e):
+        '''Creates a new Test Session.
+        '''
+        self.logInfo("Starting a new Test Session. Run 'init' command to initialize a Test Module!")
+        os.execl(sys.executable, sys.executable, *sys.argv)
 
     def do_init(self, testModuleName):
         '''Initialize the Test Environments within the module specified and the number of Test Environments required.
@@ -360,13 +367,17 @@ class Tester(Cmd):
             testModuleName = testModuleName.split()
             if len(testModuleName) == 0:
                 raise Exception("Please provide the name of the Test Package")
-            self._testModule, testEnvironmentCount = (testModuleName[0], testModuleName[1]) \
-                if len(testModuleName) > 1 else (testModuleName[0], 2)
-            self._tester = _tester(self._testModule, testEnvironmentCount=int(testEnvironmentCount))
-            if self._tester:
-                self.logInfo("Test Module was loaded successfully with {} Virtual Environments. "
-                             "Use 'load <Test Module Name>' command to load the tests in the Module".format
-                             (str(testEnvironmentCount)))
+            if self._testModule:
+                self.logInfo("Test Module {} has already been initialized. Run 'new' command to start a new Test session'" \
+                            .format(self._testModule))
+            else:
+                self._testModule, testEnvironmentCount = (testModuleName[0], testModuleName[1]) \
+                    if len(testModuleName) > 1 else (testModuleName[0], 2)
+                self._tester = _tester(self._testModule, testEnvironmentCount=int(testEnvironmentCount))
+                if self._tester:
+                    self.logInfo("Test Module was loaded successfully with {} Virtual Environments. "
+                                "Use 'load <Test Module Name>' command to load the tests in the Module".format
+                                (str(testEnvironmentCount)))
         except Exception as e:
             self.logInfo("There was a problem loading the Module - '{}'".format(e))
         self.lastcmd = ''
