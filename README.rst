@@ -4,7 +4,7 @@ PyTester: Run python unittests in the background
 Installation
 ------------
 - GIT clone or download the repository.
-- IMPORTANT: Navigate into the root directory of the repository, where setup.py exists. (ie; PyTester/)
+- Navigate to PyTester/tester/ where Tester.py exists.
 - Run the application : python3 Tester.py (located at PyTester/tester/).
 NOTE: 
 - To run bash tests on Windows, we will need 'bash' to be installed on the system.
