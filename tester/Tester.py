@@ -14,6 +14,8 @@ from unittest import TestLoader
 from multiprocessing.pool import ThreadPool
 from multiprocessing.dummy import DummyProcess
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
 class Test(object):
     """A skeleton class for a Test.
 
