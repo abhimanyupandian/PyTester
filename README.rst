@@ -26,6 +26,8 @@ Commands
 	- <Test Module> : Specifies the name of the Test Module that contains unittest.TestCase class.
 - run
 	- This command runs the tests within the Test Module that was loading using 'load' command.
+- new
+	- Creates a new Test Session.
 - environments
 	- This command diplays the status of all the Test Environments.
 - test <Test Name>
