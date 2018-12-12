@@ -5,9 +5,9 @@ Installation
 ------------
 - GIT clone or download the repository.
 - IMPORTANT: Navigate into the root directory of the repository, where setup.py exists. (ie; PyTester/)
-- Install the package using : python setup.py install. (optional)
-- Run the application : python Tester.py (located at PyTester/tester/).
-NOTE: To run bash tests on Windows, we will need 'bash' to be installed on the system.
+- Run the application : python3 Tester.py (located at PyTester/tester/).
+NOTE: 
+- To run bash tests on Windows, we will need 'bash' to be installed on the system.
 
 Structure of Test
 ------------
