@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from Tester import *
+from tester import *
 
 class BashScript(object):
     def __init__(self, script):
