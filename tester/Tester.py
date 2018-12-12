@@ -367,8 +367,10 @@ class Tester(Cmd):
             testModuleName = testModuleName.split()
             if len(testModuleName) == 0:
                 raise Exception("Please provide the name of the Test Package")
-            if self._testModule:
-                self.logInfo("Test Module {} has already been initialized. Run 'new' command to start a new Test session'" \
+            elif type(testModuleName[0]) == type(self._testModule):
+                self.logInfo("Test Module '{}' has already been initialized. Run 'load' command to load the Tests".format(self._testModule))
+            elif self._testModule:
+                self.logInfo("Another Test Module {} has already been initialized. Run 'new' command to start a new Test session'" \
                             .format(self._testModule))
             else:
                 self._testModule, testEnvironmentCount = (testModuleName[0], testModuleName[1]) \
